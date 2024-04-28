@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRoutes.js';
+import blogRouter from './routes/blogRoutes.js';
 
 const app = express();
 const port = 3000;
@@ -8,7 +9,7 @@ const port = 3000;
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/solo2demo', {
-    userNewUrlParser: true,
+    useNewUrlParser: true,
     useUnifiedTopology: true,
     autoCreate: true
     }).then(() => {
@@ -18,7 +19,7 @@ mongoose.connect('mongodb://localhost:27017/solo2demo', {
     });
 
 app.use('/users', userRouter);
-
+app.use('/blogs', blogRouter);
 app.listen(port, ()=>{
     console.log("Server is running")
 })
