@@ -15,8 +15,6 @@ export async function getUserByID(req, res){
         const users = await UserModel.findById(req.params.id);
         if (!users) {
             res.status(404).json({message: 'User not found'});
-        } else {
-            res.json(users);
         }
         res.json(users);
     } catch (error) {

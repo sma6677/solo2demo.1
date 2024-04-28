@@ -43,7 +43,7 @@ export async function createBlogPost(req, res) {
 
 export async function likeBlogPost(req, res){
     try{
-        const blog = await blogModel.findById(req.params.id);
+        const blog = await BlogModel.findById(req.params.id);
         if (!blog) {
             return res.status(404).json({message: 'Blog not found' });
         }
@@ -67,7 +67,7 @@ export async function addBlogComment(req, res){
             content,
             likes: 0
         };
-        blogs.comments.push(newComment);
+        blog.comments.push(newComment);
         const updatedBlog = await blog.save();
         res.json(updatedBlog);
     } catch (error) {
