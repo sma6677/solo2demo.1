@@ -25,7 +25,7 @@ async function fetchAndDisplayBlogPosts(){
             if (!authorResponse.ok){
                 throw new Error('Failed to fetch author details');
             }
-            const  authData = await authorResponse.json();
+            const authData = await authorResponse.json();
             blogPost.authorName = authData.name;
         }));
 

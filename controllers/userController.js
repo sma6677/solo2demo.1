@@ -27,7 +27,7 @@ export async function createUser(req, res){
         const newUser = new UserModel({
             name: req.body.name,
             username: req.body.username || ' ',
-            password: req.body.password || ' ',
+            password: req.body.password || ' '
         });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
